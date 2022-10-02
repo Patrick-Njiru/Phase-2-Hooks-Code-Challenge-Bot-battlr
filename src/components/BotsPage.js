@@ -11,9 +11,9 @@ function BotsPage() {
     .then(data => setBots(data))
   }, [])
 
-  const handleBotSelection = (id) => setBots(bots.map(bot => bot.id === id? { ...bot, chosen:"true" } : bot ))
+  const handleBotSelection = (id) => setBots(bots.map(bot => bot.id === id ? { ...bot, chosen:true } : bot ))
 
-  const handleBotDiselection = id => setBots(bots.map(bot => bot.id === id ? { ...bot, chosen: 'false'} : bot))
+  const handleBotDiselection = id => setBots(bots.map(bot => bot.id === id ? { ...bot, chosen: false } : bot ))
 
 
   const handleBotDeletion = (id) => {
