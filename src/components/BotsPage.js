@@ -13,7 +13,7 @@ function BotsPage() {
 
   return (
     <div>
-      <YourBotArmy bots={bots} />
+      <YourBotArmy bots={bots.filter(bot => bot.chosen)} />
       <BotCollection bots={bots} />
     </div>
   )
