@@ -8,11 +8,8 @@ function BotsPage() {
   useEffect(() => {
     fetch('http://localhost:8002/bots')
     .then(res => res.json())
-    .then(data => {
-      console.log(data)
-      setBots(data)
-    })
-  })
+    .then(data => setBots(data))
+  }, [])
 
   return (
     <div>
