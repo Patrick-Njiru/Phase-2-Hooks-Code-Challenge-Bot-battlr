@@ -47,7 +47,10 @@ function BotCard({ bot, handleClick, handleDelete }) {
             <div className="ui center aligned segment basic">
               <button
                 className="ui mini red button"
-                onClick={() => handleDelete(bot.id)}
+                onClick={(e) => {
+                  e.stopPropagation()
+                  handleDelete(bot.id)
+                }}
               >
                 x
               </button>
