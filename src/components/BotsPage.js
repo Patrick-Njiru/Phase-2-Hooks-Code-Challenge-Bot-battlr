@@ -11,10 +11,33 @@ function BotsPage() {
     .then(data => setBots(data))
   }, [])
 
+  const handleBotSelection = (id) => setBots(bots.map(bot => bot.id === id? { ...bot, chosen:"true" } : bot ))
+
+  const handleBotDiselection = id => setBots(bots.map(bot => bot.id === id ? { ...bot, chosen: 'false'} : bot))
+
+
+  const handleBotDeletion = (id) => {
+    fetch(`http://localhost:8002/bots/`+ id, {
+      method: "DELETE",
+      headers: {"Content-Type": "application/json"}
+    })
+    .then(res => res.json())
+    .then(data => {
+      setBots(data)
+      console.log('data', data)
+    })
+    .catch(console.log)
+  }
+  
+
   return (
     <div>
-      <YourBotArmy bots={bots.filter(bot => bot.chosen)} />
-      <BotCollection bots={bots} />
+      <YourBotArmy 
+      bots={bots.filter(bot => bot.chosen)} 
+      deleteBot={handleBotDeletion} 
+      removeBot={handleBotDiselection}
+      />
+      <BotCollection bots={bots} deleteBot={handleBotDeletion} selectBot={handleBotSelection} />
     </div>
   )
 }
