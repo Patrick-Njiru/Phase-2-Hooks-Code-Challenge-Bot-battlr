@@ -17,16 +17,13 @@ function BotsPage() {
 
 
   const handleBotDeletion = (id) => {
+    
+    setBots(bots.filter(bot => bot.id !== id )) 
+
     fetch(`http://localhost:8002/bots/`+ id, {
       method: "DELETE",
       headers: {"Content-Type": "application/json"}
-    })
-    .then(res => res.json())
-    .then(data => {
-      setBots(data)
-      console.log('data', data)
-    })
-    .catch(console.log)
+    })   
   }
   
 
