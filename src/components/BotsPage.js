@@ -23,7 +23,8 @@ function BotsPage() {
     fetch(`http://localhost:8002/bots/`+ id, {
       method: "DELETE",
       headers: {"Content-Type": "application/json"}
-    })   
+    }) 
+    .catch(console.log)  
   }
   
 
